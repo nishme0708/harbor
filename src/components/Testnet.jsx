@@ -11,6 +11,7 @@ import OffChainActors from './OffChainActors';
 import RowWithSeperator from './RowWithSeperator';
 import StatusIndicator from './StatusIndicator';
 import TestnetName from './TestnetName';
+import UpdatingInfo from './UpdatingInfo';
 
 function Testnet({ testnet }) {
   const failed = testnet?.status == 'STOPPED';
@@ -18,6 +19,14 @@ function Testnet({ testnet }) {
   if (failed) {
     classes += 'failed';
   }
+  const chainUpdate = 'off-chain updating';
+  const blockUpdate = 'Blockchains updating';
+  let totalChainUpdate = 0;
+  testnet?.testnet_off_chain_actors?.forEach((item) => {
+    if (item?.status == 'PENDING') {
+      totalChainUpdate++;
+    }
+  });
   const logos = testnet?.testnet_chains.map((chain) => LOGOS[chain?.chain]);
   return (
     <div className={classes}>
@@ -48,6 +57,25 @@ function Testnet({ testnet }) {
           </RowWithSeperator>
           <Modified dateTime={testnet.updated_at}></Modified>
         </div>
+        {totalChainUpdate > 0 && (
+          <>
+            <GutterVertical spacing={4}></GutterVertical>
+            <div className='flex'>
+              <RowWithSeperator seperator={<Dot gap={6} />}>
+                <UpdatingInfo
+                  icon={ICONS.STANDING_UP_HOUR_GLASS}
+                  color={COLORS.PROGRESS}
+                  text={`${totalChainUpdate} ${chainUpdate}`}
+                ></UpdatingInfo>
+                <UpdatingInfo
+                  icon={ICONS.STANDING_UP_HOUR_GLASS}
+                  color={COLORS.PROGRESS}
+                  text={blockUpdate}
+                ></UpdatingInfo>
+              </RowWithSeperator>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
