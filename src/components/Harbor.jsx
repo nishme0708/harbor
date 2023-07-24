@@ -4,10 +4,10 @@ import { COLORS } from '../store/Util';
 import { fetchData } from '../store/fetchData';
 import getTestnets from '../store/selector';
 import { ICONS } from './Icon';
+import Loader from './Loader';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import TestnetContainer from './TestnetContainer';
-import Loader from './Loader';
 
 function Harbor() {
   const dispatch = useDispatch();

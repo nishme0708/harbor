@@ -1,9 +1,6 @@
-import { COLORS } from '../store/Util';
 import BrandLogo from './BrandLogo';
 import Gutter from './Gutter';
-import Icon, { ICONS } from './Icon';
 import MenuItems from './MenuItems';
-import StatusIndicator from './StatusIndicator';
 
 function Navbar({ menuItems, userItems }) {
   return (
@@ -14,11 +11,7 @@ function Navbar({ menuItems, userItems }) {
         <MenuItems items={menuItems}></MenuItems>
       </div>
       <div className='flex  items-center'>
-      <MenuItems items={userItems}></MenuItems>
-        {/* <StatusIndicator status={'USER_KEY'}></StatusIndicator>
-        <Gutter spacing={10}></Gutter>
-        <Icon iconComp={ICONS.MEMBERS} color={COLORS.INACTIVE}></Icon>
-        <Icon iconComp={ICONS.ARROW_DOWN_SHORT} color={COLORS.INACTIVE}></Icon> */}
+        <MenuItems items={userItems}></MenuItems>
       </div>
     </nav>
   );
