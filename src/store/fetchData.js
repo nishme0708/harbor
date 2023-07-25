@@ -6,10 +6,10 @@ import {
 
 export function fetchData(dispatch) {
   dispatch(fetchTestnets());
-  fetch('http://localhost:3000/testnets')
+  fetch('https://api.jsonbin.io/v3/b/64bf134f8e4aa6225ec2eb45')
     .then((res) => res.json())
     .then((response) => {
-      dispatch(fetchTestnetsSuccess(response?.data?.testnet));
+      dispatch(fetchTestnetsSuccess(response?.record?.data?.testnet));
     })
     .catch((error) => {
       dispatch(fetchTestnetsError(error));
