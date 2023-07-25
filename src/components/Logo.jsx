@@ -7,7 +7,7 @@ export const LOGOS = {
   polygon: 'Polygon.png',
 };
 
-const LOGO_PATH = '/src/assets/logos/';
+const LOGO_PATH = '/logos/';
 
 function Logo({ logo, customStyle }) {
   return (
